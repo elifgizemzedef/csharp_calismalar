@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication2.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)xxxxxx
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                <form asp-action="Delete" method="post">
+                    <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-primary">Edit</a> |
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Creat" class="btn btn-primary">Create New</a>
+</p>
+
